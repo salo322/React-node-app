@@ -18,6 +18,7 @@ export interface UserStore {
   setUsers: (users: User[]) => void;
   deleteUser: (id: number) => void;
   addUser: (user: User) => void;
+  updateUser: (id: number, updatedUser: User) => void;
 }
 
 export const useUserStore = create<UserStore>((set) => ({
@@ -36,4 +37,8 @@ export const useUserStore = create<UserStore>((set) => ({
         console.log(error);
       });
   },
+  updateUser: (id: number, updatedUser: User) =>
+    set((state) => ({
+      users: state.users.map((user) => (user.id === id ? { ...user, ...updatedUser } : user)),
+    })),
 }));

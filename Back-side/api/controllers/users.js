@@ -3,14 +3,10 @@ const path = require("path");
 const usersData = require("../../data/users.json");
 
 function writeToFile(data, callback) {
-  fs.writeFile(
-    path.join(__dirname, "../../data/users.json"),
-    JSON.stringify(data, null, 2),
-    (err) => {
-      if (err) throw err;
-      callback();
-    }
-  );
+  fs.writeFile(path.join(__dirname, "../../data/users.json"), JSON.stringify(data, null, 2), (err) => {
+    if (err) throw err;
+    callback();
+  });
 }
 
 exports.getUsers = (req, res) => {
@@ -45,9 +41,11 @@ exports.createUser = (req, res) => {
 exports.updateUser = (req, res) => {
   const userId = req.params.id;
   const userIndex = usersData.findIndex((user) => user.id === parseInt(userId));
+
   if (userIndex === -1) {
     res.status(404).json({ message: "User not found" });
   } else {
+    console.log(userIndex, "user index");
     const updatedUser = {
       id: parseInt(userId),
       name: req.body.name,
