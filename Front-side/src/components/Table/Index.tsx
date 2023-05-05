@@ -1,4 +1,13 @@
-import { Table, Space, Popconfirm, Modal, Form, Input, Select, Button } from "antd";
+import {
+  Table,
+  Space,
+  Popconfirm,
+  Modal,
+  Form,
+  Input,
+  Select,
+  Button,
+} from "antd";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -117,7 +126,12 @@ const UserTable: React.FC = () => {
       render: (text: string, record: User) => (
         <Space size="middle">
           {/* <a onClick={() => handleEditUser(record)}>Edit</a> */}
-          <Popconfirm title="Are you sure you want to delete this user?" onConfirm={() => deleteUser(record.id)} okText="Yes" cancelText="No">
+          <Popconfirm
+            title="Are you sure you want to delete this user?"
+            onConfirm={() => deleteUser(record.id)}
+            okText="Yes"
+            cancelText="No"
+          >
             <a>Delete</a>
           </Popconfirm>
         </Space>
@@ -160,9 +174,18 @@ const UserTable: React.FC = () => {
         rowKey="id"
       />
 
-      <Modal title="Add User" open={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal
+        title="Add User"
+        open={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
         <Form form={form}>
-          <Form.Item name="name" label="Name" rules={[{ required: true, message: "Please enter a name" }]}>
+          <Form.Item
+            name="name"
+            label="Name"
+            rules={[{ required: true, message: "Please enter a name" }]}
+          >
             <Input />
           </Form.Item>
           <Form.Item
@@ -175,16 +198,30 @@ const UserTable: React.FC = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item name="gender" label="Gender" rules={[{ required: true, message: "Please select a gender" }]}>
+          <Form.Item
+            name="gender"
+            label="Gender"
+            rules={[{ required: true, message: "Please select a gender" }]}
+          >
             <Select>
               <Option value="male">Male</Option>
               <Option value="female">Female</Option>
             </Select>
           </Form.Item>
-          <Form.Item label="Street" name={["address", "street"]} rules={[{ required: true, message: "Please enter a street address" }]}>
+          <Form.Item
+            label="Street"
+            name={["address", "street"]}
+            rules={[
+              { required: true, message: "Please enter a street address" },
+            ]}
+          >
             <Input />
           </Form.Item>
-          <Form.Item label="City" name={["address", "city"]} rules={[{ required: true, message: "Please enter a city" }]}>
+          <Form.Item
+            label="City"
+            name={["address", "city"]}
+            rules={[{ required: true, message: "Please enter a city" }]}
+          >
             <Input />
           </Form.Item>
           <Form.Item
@@ -202,10 +239,19 @@ const UserTable: React.FC = () => {
           </Form.Item>
         </Form>
       </Modal>
-      <Modal title="Edit User" open={isEditModalVisible} onOk={handleEditOk} onCancel={handleeditCancel}>
+      <Modal
+        title="Edit User"
+        open={isEditModalVisible}
+        onOk={handleEditOk}
+        onCancel={handleeditCancel}
+      >
         {editingUser && (
           <Form form={form} initialValues={editingUser}>
-            <Form.Item name="name" label="Name" rules={[{ required: true, message: "Please enter a name" }]}>
+            <Form.Item
+              name="name"
+              label="Name"
+              rules={[{ required: true, message: "Please enter a name" }]}
+            >
               <Input />
             </Form.Item>
             <Form.Item
@@ -218,16 +264,30 @@ const UserTable: React.FC = () => {
             >
               <Input />
             </Form.Item>
-            <Form.Item name="gender" label="Gender" rules={[{ required: true, message: "Please select a gender" }]}>
+            <Form.Item
+              name="gender"
+              label="Gender"
+              rules={[{ required: true, message: "Please select a gender" }]}
+            >
               <Select>
                 <Option value="male">Male</Option>
                 <Option value="female">Female</Option>
               </Select>
             </Form.Item>
-            <Form.Item label="Street" name={["address", "street"]} rules={[{ required: true, message: "Please enter a street address" }]}>
+            <Form.Item
+              label="Street"
+              name={["address", "street"]}
+              rules={[
+                { required: true, message: "Please enter a street address" },
+              ]}
+            >
               <Input />
             </Form.Item>
-            <Form.Item label="City" name={["address", "city"]} rules={[{ required: true, message: "Please enter a city" }]}>
+            <Form.Item
+              label="City"
+              name={["address", "city"]}
+              rules={[{ required: true, message: "Please enter a city" }]}
+            >
               <Input />
             </Form.Item>
             <Form.Item

@@ -39,6 +39,8 @@ export const useUserStore = create<UserStore>((set) => ({
   },
   updateUser: (id: number, updatedUser: User) =>
     set((state) => ({
-      users: state.users.map((user) => (user.id === id ? { ...user, ...updatedUser } : user)),
+      users: state.users.map((user) =>
+        user.id === id ? { ...user, ...updatedUser } : user
+      ),
     })),
 }));
